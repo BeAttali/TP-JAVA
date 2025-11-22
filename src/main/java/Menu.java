@@ -12,6 +12,7 @@ public class Menu
         {
             do
             {
+                System.out.println();
                 System.out.println("1 - Exercice n°1");
                 System.out.println("2 - Exercice n°2");
                 System.out.println("3 - Exercice n°3");
@@ -73,11 +74,12 @@ public class Menu
                     System.out.println();
 
                     //Question 1 bis
-                    for (int i = 0; i < exo1.length; i++)
-                    {
-                        System.out.print(exo1[i]+" - ");
-                    }
-                    System.out.println();
+
+//                    for (int i = 0; i < exo1.length; i++)
+//                    {
+//                        System.out.print(exo1[i]+" - ");
+//                    }
+//                    System.out.println();
 
                     //Question 2
 
@@ -106,7 +108,7 @@ public class Menu
                     {
                         if(recherche == exo1[i])
                         {
-                            System.out.print("position: "+ i+1);
+                            System.out.print("position: "+ (i+1));
                             trouve = true;
                             break;
                         }
@@ -115,6 +117,7 @@ public class Menu
                     {
                         System.out.println("Tu n'a pas trouver");
                     }
+                    System.out.println();
 
 
 
