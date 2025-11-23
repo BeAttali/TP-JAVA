@@ -372,6 +372,16 @@ public class Menu
                     tabExo6[2][0] = 5;tabExo6[2][1] = 6;tabExo6[2][2] = 0;tabExo6[2][3] = 0;
                     tabExo6[3][0] = 7;tabExo6[3][1] = 8;tabExo6[3][2] = 0;tabExo6[3][3] = 0;
 
+
+                    for (int i=0; i <tabExo6.length; i++)
+                    {
+                        for ( int j=0 ;  j<tabExo6[i].length ; j++ )
+                        {
+                            System.out.print(tabExo6[i][j]+" - ");
+                        }
+                        System.out.println();
+                    }
+
                     System.out.println("Valeurs");
                     for (int i=0; i< tabExo6.length; i++)
                     {
@@ -383,6 +393,7 @@ public class Menu
                             }
                         }
                     }
+                    System.out.println();
 
                     System.out.println("Lignes : ");
                     for(int i=0; i < tabExo6.length; i++)
@@ -395,6 +406,7 @@ public class Menu
                             }
                         }
                     }
+                    System.out.println();
 
                     System.out.println("Colonnes : ");
                     for(int i=0; i < tabExo6.length; i++)
