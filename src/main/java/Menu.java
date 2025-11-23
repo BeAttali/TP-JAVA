@@ -20,7 +20,7 @@ public class Menu
                 System.out.println("0 - Quitter");
                 System.out.print("Votre choix : ");
                 choix = input.nextInt();
-            } while (choix > 5);
+            } while (choix > 6);
 
             switch (choix)
             {
@@ -313,6 +313,7 @@ public class Menu
                 case 5:
 
                     //CASE ENTRAINEMENT
+                    //EX n°1
 
                     int[] case5 = new int[]{10,50,2,3};
 
@@ -358,6 +359,56 @@ public class Menu
                     {
                         System.out.println("Tu n'a pas trouver");
                     }
+
+
+                    break;
+
+                case 6:
+
+                    int[][] tabExo6 = new int[4][4];
+
+                    tabExo6[0][0] = 1;tabExo6[0][1] = 2;tabExo6[0][2] = 0;tabExo6[0][3] = 0;
+                    tabExo6[1][0] = 3;tabExo6[1][1] = 4;tabExo6[1][2] = 0;tabExo6[1][3] = 0;
+                    tabExo6[2][0] = 5;tabExo6[2][1] = 6;tabExo6[2][2] = 0;tabExo6[2][3] = 0;
+                    tabExo6[3][0] = 7;tabExo6[3][1] = 8;tabExo6[3][2] = 0;tabExo6[3][3] = 0;
+
+                    System.out.println("Valeurs");
+                    for (int i=0; i< tabExo6.length; i++)
+                    {
+                        for ( int j=0 ; j<tabExo6[i].length ; j++ )
+                        {
+                            if (tabExo6[i][j] !=0)
+                            {
+                                System.out.print(tabExo6[i][j]+" - ");
+                            }
+                        }
+                    }
+
+                    System.out.println("Lignes : ");
+                    for(int i=0; i < tabExo6.length; i++)
+                    {
+                        for(int j=0; j < tabExo6[i].length ; j++ )
+                        {
+                            if (tabExo6[i][j] !=0)
+                            {
+                                System.out.print(i+" - ");
+                            }
+                        }
+                    }
+
+                    System.out.println("Colonnes : ");
+                    for(int i=0; i < tabExo6.length; i++)
+                    {
+                        for(int j=0; j < tabExo6[i].length ; j++ )
+                        {
+                            if (tabExo6[i][j] !=0)
+                            {
+                                System.out.print(j+" - ");
+                            }
+                        }
+                    }
+
+
 
 
                     break;
