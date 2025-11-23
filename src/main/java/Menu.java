@@ -20,7 +20,7 @@ public class Menu
                 System.out.println("0 - Quitter");
                 System.out.print("Votre choix : ");
                 choix = input.nextInt();
-            } while (choix > 6);
+            } while (choix > 7);
 
             switch (choix)
             {
@@ -125,6 +125,9 @@ public class Menu
                     break;
 
                 case 2:
+
+                    //VOIR CASE 6
+
                     int[] tabExo2 = new int[] {11,32,41,632,10};
                     int tailleP=0;
                     int tailleI=0;
@@ -134,9 +137,9 @@ public class Menu
                     {
                         if(nb% 2 == 0)
                         {
-                            tailleP=tailleP+1;
+                            tailleP++;
                         } else {
-                            tailleI=tailleI+1;
+                            tailleI++;
                         }
                     }
 
@@ -227,6 +230,8 @@ public class Menu
 
 
                 case 4:
+
+                    //
                     int[][] tabExo4 = new int[4][4];
 
                     // Exemple n°1
@@ -391,12 +396,12 @@ public class Menu
                     System.out.println("Valeurs impair : ");
                     for (int nb : tabExo2b)
                     {
-                        if (nb%2==0)
+                        if (nb%2!=0)
                         {
-                        }else {
                             System.out.print(nb+" - ");
                             totalI+=nb;
                         }
+
                     }
                     System.out.println();
 
