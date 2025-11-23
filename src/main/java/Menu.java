@@ -365,6 +365,49 @@ public class Menu
 
                 case 6:
 
+                    //Exo 2
+
+                    int[] tabExo2b = new int[] {11,32,41,632,10};
+                    int totalP=0;
+                    int totalI=0;
+
+                    for(int nb: tabExo2b)
+                    {
+                        System.out.print(nb+" - ");
+                    }
+                    System.out.println();
+
+                    System.out.println("Valeurs pair: ");
+                    for(int nb : tabExo2b)
+                    {
+                        if (nb%2==0)
+                        {
+                            System.out.print(nb+" - ");
+                            totalP+=nb;
+                        }
+                    }
+                    System.out.println();
+
+                    System.out.println("Valeurs impair : ");
+                    for (int nb : tabExo2b)
+                    {
+                        if (nb%2==0)
+                        {
+                        }else {
+                            System.out.print(nb+" - ");
+                            totalI+=nb;
+                        }
+                    }
+                    System.out.println();
+
+                    System.out.println("Somme pair : "+totalP);
+                    System.out.println("Somme impair : "+totalI);
+
+
+                    break;
+
+                case 7:
+
                     int[][] tabExo6 = new int[4][4];
 
                     tabExo6[0][0] = 1;tabExo6[0][1] = 2;tabExo6[0][2] = 0;tabExo6[0][3] = 0;
