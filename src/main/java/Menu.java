@@ -403,7 +403,6 @@ public class Menu
                     System.out.println("Somme pair : "+totalP);
                     System.out.println("Somme impair : "+totalI);
 
-
                     break;
 
                 case 7:
