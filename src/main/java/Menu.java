@@ -120,8 +120,6 @@ public class Menu
                     System.out.println();
 
 
-
-
                     break;
 
                 case 2:
@@ -211,11 +209,10 @@ public class Menu
 
                     for(int i=0 ; i < tab1Exo3.length ; i++ )
                     {
-                        int tab3 = tab1Exo3[i];
 
                         for(int nb : tab2Exo3)
                         {
-                            total3+=nb*tab3;
+                            total3+=nb*tab1Exo3[i];
                         }
 
                     }
@@ -231,7 +228,8 @@ public class Menu
 
                 case 4:
 
-                    //
+                    //VOIR CASE 7
+
                     int[][] tabExo4 = new int[4][4];
 
                     // Exemple n°1
@@ -252,9 +250,9 @@ public class Menu
 
                     int nombre = 0;
 
-                    for (int i=0; i <tabExo4.length; i++)
+                    for (int i=0; i <tabExo4.length; i++) //Ligne
                     {
-                        for ( int j=0 ;  j<tabExo4[i].length ; j++ )
+                        for ( int j=0 ;  j<tabExo4[i].length ; j++ ) //Colonnes
                         {
                             System.out.print(tabExo4[i][j]+" - ");
 
@@ -271,6 +269,12 @@ public class Menu
                     int[] tabcolonne = new int[nombre];
                     int taille =0;
 
+                    //Autres solution
+
+//                    String valeur ="";
+//                    String lignes ="";
+//                    String colonnes ="";
+
                     for (int i=0; i <tabExo4.length; i++)
                     {
                         for ( int j=0 ;  j<tabExo4[i].length ; j++ )
@@ -282,6 +286,12 @@ public class Menu
                                 tabligne[taille]=i;
                                 tabcolonne[taille]=j;
                                 taille++;
+
+//                                valeur += tabExo4[i][j]+ " - ";
+//                                lignes += i+ " - ";
+//                                colonnes += j+ " - ";
+
+
                             }
                         }
 
