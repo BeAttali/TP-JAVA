@@ -27,12 +27,24 @@ public class Client {
 
     public void ajouterUnReleve(Releve unReleve) { this.releves.add(unReleve); }
 
-//    public int calculerConsommation() {
-//
-//        return 1;
-//    }
+    public int calculerConsommation() {
+        // Pas assez de relevés
+        if (releves.size() < 2) return 0;
 
-    //public boolean verifierValeurNouveauReleve(int nouvelleValeur) {
-    //}
+        // Récupérer le dernier relevé
+        Releve dernier = releves.get(releves.size() - 1);
+
+        // Récupérer l'avant dernier relevé
+        Releve avantDernier = releves.get(releves.size() - 2);
+
+        // Retourner la différence
+        return dernier.getValeurReleve() - avantDernier.getValeurReleve();
+    }
+
+    public boolean verifierValeurNouveauReleve(int nouvelleValeur) {
+        if(releves.isEmpty()) return true;
+        Releve dernier = releves.get(releves.size()-1);
+        return  nouvelleValeur >= dernier.getValeurReleve();
+    }
 
 }

@@ -3,29 +3,29 @@ package sio.tp4.models;
 public class Releve
 {
 
-    private String dateRevele;
-    private int valeurRevele;
+    private String dateReleve;
+    private int valeurReleve;
 
-    public Releve(String dateRevele, int valeurRevele) {
-        this.dateRevele = dateRevele;
-        this.valeurRevele = valeurRevele;
+    public Releve(String dateReleve, int valeurReleve) {
+        this.dateReleve = dateReleve;
+        this.valeurReleve = valeurReleve;
     }
 
-    public String getDateRevele() {
-        return dateRevele;
+    public String getDateReleve() {
+        return dateReleve;
     }
 
-    public void setDateRevele(String dateRevele)
+    public void setDateReleve(String dateReleve)
     {
-        this.dateRevele = dateRevele;
+        this.dateReleve = dateReleve;
     }
 
-    public int getValeurRevele()
+    public int getValeurReleve()
     {
-        return valeurRevele;
+        return valeurReleve;
     }
 
-    public void setValeurRevele(int valeurRevele) {
-        this.valeurRevele = valeurRevele;
+    public void setValeurReleve(int valeurReleve) {
+        this.valeurReleve = valeurReleve;
     }
 }

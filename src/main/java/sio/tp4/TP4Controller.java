@@ -12,10 +12,13 @@ import sio.tp4.models.Releve;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class TP4Controller implements Initializable {
 
+    private Alert alert;
     @FXML
     private TableColumn tcNumeroAgent;
     @FXML
@@ -27,13 +30,13 @@ public class TP4Controller implements Initializable {
     @FXML
     private TableColumn tcNumeroClient;
     @FXML
-    private TableView tvReleves;
+    private TableView<Releve> tvReleves;
     @FXML
-    private TableColumn tcValeurReleve;
+    private TableColumn<Releve, Integer> tcValeurReleve;
     @FXML
-    private TableColumn tcDateReleve;
+    private TableColumn<Releve, String> tcDateReleve;
     @FXML
-    private TableView tvClients;
+    private TableView<Client> tvClients;
     @FXML
     private TableColumn tcNomAgent;
     @FXML
@@ -41,18 +44,45 @@ public class TP4Controller implements Initializable {
     @FXML
     private TextField txtNouveauReleve;
     @FXML
-    private TableView tvAgents;
+    private TableView<Agent> tvAgents; /// AJOUTE !!!!! ---->  <Agent>
 
     private ArrayList<Agent> agents = new ArrayList<>();
+
+    private ArrayList<Client> clients = new ArrayList<>();
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
 
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur de choix");
+        alert.setHeaderText(null);
+
+        tcDateReleve.setCellValueFactory(new PropertyValueFactory<>("dateReleve"));
+        tcValeurReleve.setCellValueFactory(new PropertyValueFactory<>("valeurReleve"));
+
         tcNumeroAgent.setCellValueFactory(new PropertyValueFactory<>("idAgent"));
         tcNomAgent.setCellValueFactory(new PropertyValueFactory<>("nomAgent"));     // ← manquait !
 
+        tcNumeroClient.setCellValueFactory(new PropertyValueFactory<>("idClient"));
+        tcNomClient.setCellValueFactory(new PropertyValueFactory<>("nomClient"));
 
+
+        initDatas();
+
+
+
+
+        tvAgents.setItems(FXCollections.observableArrayList(agents));
+
+        tvClients.setItems(FXCollections.observableArrayList(clients));
+
+    }
+
+    public void initDatas()
+    {
         Agent agent1 = new Agent(1, "Enzo");
         Agent agent2 = new Agent(2, "Noa");
         Agent agent3 = new Agent(3, "Lilou");
@@ -81,7 +111,7 @@ public class TP4Controller implements Initializable {
         Releve releve12 = new Releve("23/10/2024", 1071);
         Releve releve13 = new Releve("03/01/2024", 14);
 
-// On ajoute nos relevés à nos clients
+        // On ajoute nos relevés à nos clients
         client1.ajouterUnReleve(releve1);
         client1.ajouterUnReleve(releve2);
         client1.ajouterUnReleve(releve3);
@@ -110,32 +140,81 @@ public class TP4Controller implements Initializable {
         agents.add(agent1);
         agents.add(agent2);
         agents.add(agent3);
-        
-
-        tvAgents.setItems(FXCollections.observableArrayList(agents));
-    }
-
-    public void initDatas()
-    {
-        // A vous de jouer
-        // Créer le jeu d'essais
     }
 
     @FXML
     public void tvClientsClicked(Event event)
     {
-        // A vous de jouer
+        Client clientSelectionne = tvClients.getSelectionModel().getSelectedItem();
+
+        if (clientSelectionne != null)
+        {
+            tvReleves.setItems(FXCollections.observableArrayList(clientSelectionne.getReleves()));
+
+
+            // Afficher la consommation ← AJOUTE CETTE LIGNE
+            txtConsommation.setText(String.valueOf(clientSelectionne.calculerConsommation()));
+        }
+
+
+
     }
 
     @FXML
     public void btnInsererClicked(Event event)
     {
-        // A vous de jouer
+
+        Client clientSelectionne = tvClients.getSelectionModel().getSelectedItem();
+
+        if(clientSelectionne == null){
+            alert.setContentText("Choisis un client");
+            alert.showAndWait();
+        } else if  (txtNouveauReleve.getText().isEmpty())
+        {
+            alert.setContentText("Veuillez selectionner le nouveau releve");
+            alert.showAndWait();
+        }else if (dpDateReleve.getValue() == null)
+        {
+            alert.setContentText("Veuillez selectionner le date du releve");
+            alert.showAndWait();
+        }
+
+        int newReleve =  Integer.parseInt(txtNouveauReleve.getText());
+        String newDate = dpDateReleve.getValue().toString();
+
+        if(!clientSelectionne.verifierValeurNouveauReleve(newReleve)){
+            alert.setContentText("La nouvelle doit etre superieur");
+            alert.showAndWait();
+        }
+
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String date = dateFormat.format(dpDateReleve.getValue());
+
+        Releve newReleve1 = new Releve(date, newReleve);
+
+        tvClients.getSelectionModel().getSelectedItem().ajouterUnReleve(newReleve1);
+
+        txtConsommation.setText(String.valueOf(clientSelectionne.calculerConsommation()));
+
+        // ✅ Mettre à jour la TableView
+        tvReleves.setItems(FXCollections.observableArrayList(clientSelectionne.getReleves()));
+
+        txtNouveauReleve.clear();
+        dpDateReleve.setValue(null);
+
+
     }
 
     @FXML
     public void tvAgentsClicked(Event event)
     {
-        // A vous de jouer
+        Agent agentSelectionne = tvAgents.getSelectionModel().getSelectedItem();
+
+        if (agentSelectionne != null) {
+
+            // ✅ Tu donnes les clients de l'agent sélectionné
+            tvClients.setItems(FXCollections.observableArrayList(agentSelectionne.getClients()));
+        }
+
     }
 }
